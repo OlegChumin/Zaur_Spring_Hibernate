@@ -19,14 +19,14 @@ public class Test1 {
                 .addAnnotatedClass(Employee.class)
                 .buildSessionFactory();
 
-        Session session = factory.getCurrentSession();
-
-        Employee emp = new Employee("Zaur", "Tregulov", "IT", 500);
-
-        session.beginTransaction();
-        session.save(emp); //CRUD -> CREATE == INSERT
-        session.getTransaction().commit();
-
-
+        try {
+            Session session = factory.getCurrentSession();
+            Employee emp = new Employee("Zaur", "Tregulov", "IT", 500);
+            session.beginTransaction();
+            session.save(emp); //CRUD -> CREATE == INSERT
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+        }
     }
 }

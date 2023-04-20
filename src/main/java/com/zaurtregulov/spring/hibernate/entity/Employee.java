@@ -18,7 +18,7 @@ public class Employee {
     @Column(name="surname")
     private String surname;
 
-    @Column(name="deparment")
+    @Column(name="department")
     private String department;
 
     @Column(name="salary")
