@@ -41,7 +41,7 @@ public class FactoryMethodExample {
     // Конкретный класс фабрики Mercedes, наследующий абстрактный класс CarFactory
     static class MercedesFactory extends CarFactory {
         @Override
-        // Реализация абстрактного метода для создания Mercedes
+            // Реализация абстрактного метода для создания Mercedes
         Car getCar() {
             return new Mercedes();
         }
@@ -55,7 +55,7 @@ public class FactoryMethodExample {
     // Конкретный класс фабрики BMW, наследующий абстрактный класс CarFactory
     static class BMWFactory extends CarFactory {
         @Override
-        // Реализация абстрактного метода для создания BMW
+            // Реализация абстрактного метода для создания BMW
         Car getCar() {
             return new BMW();
         }
@@ -63,6 +63,7 @@ public class FactoryMethodExample {
         // Пример использования фабрики
         public static void main(String[] args) {
             new BMWFactory().createCar();
+            new MercedesFactory().createCar();
         }
     }
 
