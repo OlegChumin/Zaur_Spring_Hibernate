@@ -5,8 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.List;
-
 /**
  * CRUD - это акроним, обозначающий базовые операции с данными в базе данных. CRUD означает:
  *
@@ -15,7 +13,7 @@ import java.util.List;
  * U (update) - обновление записей
  * D (delete) - удаление записей
  * */
-public class Test4 {
+public class Test4_1 {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -25,8 +23,10 @@ public class Test4 {
         try {
             Session session = factory.getCurrentSession(); // создание сессии
             session.beginTransaction(); // начало транзакции
-            Employee employee = session.get(Employee.class, 3); // получаем первого Alexander
-            employee.setSalary(1500); //на полученном объекте вносим изменения
+//            Employee employee = session.get(Employee.class, 3); // получаем первого Alexander
+//            employee.setSalary(1500); //на полученном объекте вносим изменения
+            session.createQuery("update Employee set salary = 1000 " +
+                    "where name = 'Alexander'").executeUpdate();
             session.getTransaction().commit(); // коммит транзакции (сохраняем изменения объекта уже в таблице БД
 
             System.out.println("Done!"); // вывод сообщения об успешном выполнении операции
