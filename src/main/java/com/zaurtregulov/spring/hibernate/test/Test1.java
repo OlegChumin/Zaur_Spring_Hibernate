@@ -21,10 +21,13 @@ public class Test1 {
 
         try {
             Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Zaur", "Tregulov", "IT", 500);
+            Employee emp = new Employee("Alexander", "Smirnov", "IT", 700);
             session.beginTransaction();
             session.save(emp); //CRUD -> CREATE == INSERT
             session.getTransaction().commit();
+
+            System.out.println("Done!");
+
         } finally {
             factory.close();
         }
