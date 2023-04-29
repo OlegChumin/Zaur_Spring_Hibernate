@@ -27,6 +27,7 @@ public class Test3_3 {
             session.beginTransaction(); // начало транзакции
             List<Employee> emps = session.createQuery("from Employee") // выполнение запроса на получение всех записей из таблицы
                     .getResultList(); // получение списка объектов Employee, удовлетворяющих запросу
+            emps.stream().forEach(System.out::println);
             session.getTransaction().commit(); // коммит транзакции
 
             System.out.println("Done!"); // вывод сообщения об успешном выполнении операции
