@@ -4,6 +4,9 @@ import com.zaurtregulov.spring.hibernate.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.util.List;
+
 /**
  * CRUD - это акроним, обозначающий базовые операции с данными в базе данных. CRUD означает:
  *
@@ -12,7 +15,7 @@ import org.hibernate.cfg.Configuration;
  * U (update) - обновление записей
  * D (delete) - удаление записей
  * */
-public class Test1 {
+public class Test4 {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -20,16 +23,16 @@ public class Test1 {
                 .buildSessionFactory();
 
         try {
-            Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Alexander", "Ivanov", "IT", 780);
-            session.beginTransaction();
-            session.save(emp); //CRUD -> CREATE == INSERT
-            session.getTransaction().commit();
+            Session session = factory.getCurrentSession(); // создание сессии
+            session.beginTransaction(); // начало транзакции
 
-            System.out.println("Done!");
+
+            session.getTransaction().commit(); // коммит транзакции
+
+            System.out.println("Done!"); // вывод сообщения об успешном выполнении операции
 
         } finally {
-            factory.close();
+            factory.close(); // закрытие фабрики сессий
         }
     }
 }
