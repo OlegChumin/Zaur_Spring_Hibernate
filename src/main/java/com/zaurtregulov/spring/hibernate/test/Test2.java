@@ -22,15 +22,15 @@ public class Test2 {
 
         try {
             Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Elena", "Petrova", "SALES", 800);
-            session.beginTransaction();
-            session.save(emp); //CRUD -> CREATE == INSERT
-            session.getTransaction().commit(); // здесь транзакция уже закрыта
-
-            int myId = emp.getId();
+//            Employee emp = new Employee("Elena", "Petrova", "SALES", 800);
+//            session.beginTransaction();
+//            session.save(emp); //CRUD -> CREATE == session.save ==INSERT
+//            session.getTransaction().commit(); // здесь транзакция уже закрыта
+//
+//            int myId = emp.getId();
             session = factory.getCurrentSession(); // открываем новую сессию
             session.beginTransaction(); // запускаем транзакцию
-            Employee employee = session.get(Employee.class, myId);
+            Employee employee = session.get(Employee.class, 10); // READ == SELECT преобразование строки таблицы в объект
             session.getTransaction().commit(); // закрываем транзакцию
             System.out.println(employee);
 
