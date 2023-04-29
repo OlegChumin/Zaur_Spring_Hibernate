@@ -23,8 +23,8 @@ public class Test5 {
         try {
             Session session = factory.getCurrentSession(); // создание сессии
             session.beginTransaction(); // начало транзакции
-            Employee employee = session.get(Employee.class, 3);
-            session.delete(employee); // удаление работника с id 3 Alexander Smirnov
+            session.createQuery("DELETE Employee " +
+                    "WHERE name = 'Alexander'").executeUpdate();
 
             session.getTransaction().commit(); // коммит транзакции (сохраняем изменения объекта уже в таблице БД
 
