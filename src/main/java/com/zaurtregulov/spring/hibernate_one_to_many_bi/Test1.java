@@ -18,8 +18,14 @@ public class Test1 {
 
         try {
             session = factory.getCurrentSession();
+            Department department = new Department("SALES", 500, 1500);
+            Employee_3 employee_3_1 = new Employee_3("Oleg", "Sidorov", 900);
+            Employee_3 employee_3_2 = new Employee_3("Olga", "Vasilieva", 1100);
+            department.addEmployeeToDepartment(employee_3_1);
+            department.addEmployeeToDepartment(employee_3_2);
 
             session.beginTransaction();
+            session.save(department);
             session.getTransaction().commit();
             System.out.println("Done!");
         }
