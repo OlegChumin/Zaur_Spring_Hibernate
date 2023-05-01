@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Test1 {
+public class Test1_2 {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -14,29 +14,12 @@ public class Test1 {
                 .addAnnotatedClass(Details.class)
                 .buildSessionFactory();
 
-//        try {
-//            Session session = factory.getCurrentSession();
-//            Employee_2 employee_2 = new Employee_2("Zaur", "Tregulov", "IT", 500);
-//            Details details = new Details("Baku", "12345678", "zaurtregulov@gmail.com");
-//            employee_2.setEmployee_2_details(details);
-//
-//            session.beginTransaction();
-//            session.save(employee_2);
-//            session.getTransaction().commit();
-//            System.out.println("Done!");
-//        }
-//        finally {
-//            factory.close();
-//        }
-
         try {
             Session session = factory.getCurrentSession();
-            Employee_2 employee_2 = new Employee_2("Oleg", "Smirnov", "SALES", 700);
-            Details details = new Details("Moscow", "987654321", "olejka@gmail.com");
-            employee_2.setEmployee_2_details(details);
-
             session.beginTransaction();
-            session.save(employee_2);
+            Employee_2 employee_2 = session.get(Employee_2.class, 1);
+            System.out.println(employee_2);
+            System.out.println(employee_2.getEmployee_2_details()); // работает cascade
             session.getTransaction().commit();
             System.out.println("Done!");
         }
