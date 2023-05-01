@@ -1,7 +1,7 @@
-package com.zaurtregulov.spring.hibernate_test_2;
+package com.zaurtregulov.spring.hibernate_one_to_one;
 
-import com.zaurtregulov.spring.hibernate_test_2.entity.Details;
-import com.zaurtregulov.spring.hibernate_test_2.entity.Employee_2;
+import com.zaurtregulov.spring.hibernate_one_to_one.entity.Details;
+import com.zaurtregulov.spring.hibernate_one_to_one.entity.Employee_2;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
