@@ -1,11 +1,10 @@
 package com.zaurtregulov.spring.hibernate_test_2.entity;
 
 import javax.persistence.*;
-import javax.xml.soap.Detail;
 
 @Entity
 @Table(name="employees_2")
-public class Employee {
+public class Employee_2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -31,15 +30,19 @@ public class Employee {
      @JoinColumn используется для указания столбца, который будет использоваться в качестве внешнего ключа для
      соединения двух таблиц. В данном случае, она указывает, что в таблице employees должен быть создан столбец
      details_id, который будет использоваться в качестве внешнего ключа для связи со столбцом id в таблице details.
+     По умолчанию, OneToOne отношение не использует каскадирование (CascadeType), то есть при удалении одной из
+     сущностей в отношении, связь между ними просто обнуляется. Однако, в зависимости от ситуации, можно задать нужный
+     тип каскадирования явно при помощи аннотации @OneToOne(cascade = ...). Например, если нужно удалить связанную
+     сущность при удалении основной, можно использовать CascadeType.REMOVE.
      * */
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "details_id")
     private Details employee_2_details;
 
-    public Employee() {
+    public Employee_2() {
     }
 
-    public Employee(String name, String surname, String department, int salary) {
+    public Employee_2(String name, String surname, String department, int salary) {
         this.name = name;
         this.surname = surname;
         this.department = department;
