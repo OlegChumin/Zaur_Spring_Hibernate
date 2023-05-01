@@ -1,9 +1,10 @@
 package com.zaurtregulov.spring.hibernate_test_2.entity;
 
 import javax.persistence.*;
+import javax.xml.soap.Detail;
 
 @Entity
-@Table(name="employees")
+@Table(name="employees_2")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +22,19 @@ public class Employee {
 
     @Column(name="salary")
     private int salary;
+
+    /**
+     *
+     Аннотация @OneToOne используется для установления отношения один к одному между двумя сущностями в JPA. Она
+     указывает, что поле с этой аннотацией должно быть отображено на другую сущность, на которую ссылаются.
+
+     @JoinColumn используется для указания столбца, который будет использоваться в качестве внешнего ключа для
+     соединения двух таблиц. В данном случае, она указывает, что в таблице employees должен быть создан столбец
+     details_id, который будет использоваться в качестве внешнего ключа для связи со столбцом id в таблице details.
+     * */
+    @OneToOne
+    @JoinColumn(name = "details_id")
+    private Details employee_2_details;
 
     public Employee() {
     }
