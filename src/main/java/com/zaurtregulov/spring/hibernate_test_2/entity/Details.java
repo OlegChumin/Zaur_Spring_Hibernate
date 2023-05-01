@@ -40,7 +40,18 @@ public class Details {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "employee_2_details", cascade = CascadeType.ALL) //  @JoinColumn(name = "details_id") уже прописана
+    /**
+     * использование аннотации @OneToOne с параметром mappedBy, который указывает на свойство в другом классе, которое
+     * устанавливает связь OneToOne с текущим классом. В данном случае, связь OneToOne установлена с классом Employee_2,
+     * и параметр mappedBy указывает на свойство employee_2_details в этом классе.
+     *
+     * Также в этой аннотации используется параметр cascade, который указывает на тип каскадной операции, которая будет
+     * применена к связанному объекту Employee_2 при выполнении операций на текущем объекте Details. В данном случае,
+     * указаны типы PERSIST и REFRESH, что означает, что при сохранении нового объекта Details, новый объект Employee_2
+     * также будет сохранен, а при обновлении объекта Details, объект Employee_2 также будет обновлен.
+     *
+     * */
+    @OneToOne(mappedBy = "employee_2_details", cascade = {CascadeType.PERSIST, CascadeType.REFRESH}) //  @JoinColumn(name = "details_id") уже прописана
     private Employee_2 employee_2; //OneToOne for Bi-directional
 
     public Details() {
