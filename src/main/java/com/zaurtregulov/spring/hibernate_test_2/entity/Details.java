@@ -40,6 +40,9 @@ public class Details {
     @Column(name = "email")
     private String email;
 
+    @OneToOne(mappedBy = "employee_2_details", cascade = CascadeType.ALL) //  @JoinColumn(name = "details_id") уже прописана
+    private Employee_2 employee_2; //OneToOne for Bi-directional
+
     public Details() {
     }
 
@@ -79,6 +82,14 @@ public class Details {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Employee_2 getEmployee_2() {
+        return employee_2;
+    }
+
+    public void setEmployee_2(Employee_2 employee_2) {
+        this.employee_2 = employee_2;
     }
 
     @Override
