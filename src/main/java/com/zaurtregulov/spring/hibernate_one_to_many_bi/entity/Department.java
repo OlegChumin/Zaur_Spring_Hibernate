@@ -37,10 +37,9 @@ public class Department {
     public void addEmployeeToDepartment(Employee_3 employee_3) {
         if (employee_3List == null) {
             employee_3List = new ArrayList<>();
-        } else {
+        }
             employee_3List.add(employee_3);
             employee_3.setDepartment(this); // для добавляемого работника устанавливаем текущий департамент куда добавляем
-        }
     }
 
     public int getId() {
