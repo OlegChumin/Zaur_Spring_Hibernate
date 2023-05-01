@@ -99,4 +99,12 @@ public class Employee_2 {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
+    public Details getEmployee_2_details() {
+        return employee_2_details;
+    }
+
+    public void setEmployee_2_details(Details employee_2_details) {
+        this.employee_2_details = employee_2_details;
+    }
 }
