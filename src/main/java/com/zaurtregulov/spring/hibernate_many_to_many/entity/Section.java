@@ -17,6 +17,12 @@ public class Section {
     private String name;
 
     @ManyToMany
+    @JoinTable(name = "child_section",
+            joinColumns = @JoinColumn(name = "section_id"),
+            // указываем, с помощью какого столбца child_section связывается с section
+            inverseJoinColumns = @JoinColumn(name = "child_id"))
+            // указываем с помощью какого столбца child_section связывается с child
+
     private List<Child> children;
 
     public Section() {
@@ -27,7 +33,7 @@ public class Section {
     }
 
     public void addChildToSection(Child child) {
-        if(children == null) {
+        if (children == null) {
             children = new ArrayList<>();
         }
 
