@@ -33,6 +33,10 @@ public class Child {
     @Column(name = "age")
     private int age;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "child_section",
+            joinColumns = @JoinColumn(name = "child_id"), // указываем, с помощью какого столбца child_section связывается с child
+            inverseJoinColumns = @JoinColumn(name = "section_id")) // указываем с помощью какого столбца child_section связывается с section
     private List<Section> sectionList;
 
     public Child() {
