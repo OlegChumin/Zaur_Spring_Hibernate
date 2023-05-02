@@ -22,9 +22,13 @@ public class Test1_2 {
 
             System.out.println("Show department:");
             System.out.println(department);
-            System.out.println("Show emplyees of the department:");
-            System.out.println(department.getEmployee_3List());
+
+            department.getEmployee_3List().get(0);
+
             session.getTransaction().commit();
+
+            System.out.println("Show employees of the department:");
+            System.out.println(department.getEmployee_3List());
             System.out.println("Done!");
         }
         finally {
