@@ -22,9 +22,9 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE},
-            mappedBy = "department")
-    private List<Employee_4> employee_3List;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id") //указываем столбец target таблицы employees
+    private List<Employee_3> employee_3List;
 
     public Department() {
     }
@@ -35,12 +35,12 @@ public class Department {
         this.minSalary = minSalary;
     }
 
-    public void addEmployeeToDepartment(Employee_4 employee_4) {
+    public void addEmployeeToDepartment(Employee_3 employee_3) {
         if (employee_3List == null) {
             employee_3List = new ArrayList<>();
         }
-            employee_3List.add(employee_4);
-            employee_4.setDepartment(this); // для добавляемого работника устанавливаем текущий департамент куда добавляем
+            employee_3List.add(employee_3);
+//            employee_3.setDepartment(this); // для добавляемого работника устанавливаем текущий департамент куда добавляем
     }
 
     public int getId() {
@@ -75,12 +75,12 @@ public class Department {
         this.minSalary = minSalary;
     }
 
-    public List<Employee_4> getEmployee_3List() {
+    public List<Employee_3> getEmployee_3List() {
         return employee_3List;
     }
 
-    public void setEmployee_3List(List<Employee_4> employee_4List) {
-        this.employee_3List = employee_4List;
+    public void setEmployee_3List(List<Employee_3> employee_3List) {
+        this.employee_3List = employee_3List;
     }
 
     @Override

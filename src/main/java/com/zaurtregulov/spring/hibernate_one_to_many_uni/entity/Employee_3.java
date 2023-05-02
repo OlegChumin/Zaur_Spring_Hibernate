@@ -1,7 +1,5 @@
 package com.zaurtregulov.spring.hibernate_one_to_many_uni.entity;
 
-import com.zaurtregulov.spring.hibernate_one_to_many_bi.entity.Department;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,10 +18,6 @@ public class Employee_3 {
 
     @Column(name="salary")
     private int salary;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinColumn(name = "department_id")
-    private com.zaurtregulov.spring.hibernate_one_to_many_bi.entity.Department department;
 
     public Employee_3() {
     }
@@ -64,14 +58,6 @@ public class Employee_3 {
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public com.zaurtregulov.spring.hibernate_one_to_many_bi.entity.Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
 
     @Override
