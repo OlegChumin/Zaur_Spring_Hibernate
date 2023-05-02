@@ -16,13 +16,22 @@ public class Section {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    /**
+     * Указание cascade = CascadeType.ALL в аннотации @ManyToMany позволяет распространять операции сохранения,
+     * обновления и удаления на связанные сущности. В данном случае, благодаря этому указанию, при сохранении объекта
+     * Section будут автоматически сохранены также все связанные с ним объекты Child, которые были добавлены в список
+     * children.
+     *
+     * Без указания cascade = CascadeType.ALL, при попытке сохранения объекта Section без предварительного сохранения
+     * связанных с ним объектов Child будет выброшено исключение org.hibernate.TransientPropertyValueException.
+     *
+     * */
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "child_section",
             joinColumns = @JoinColumn(name = "section_id"),
             // указываем, с помощью какого столбца child_section связывается с section
             inverseJoinColumns = @JoinColumn(name = "child_id"))
             // указываем с помощью какого столбца child_section связывается с child
-
     private List<Child> children;
 
     public Section() {
