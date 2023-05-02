@@ -23,6 +23,8 @@ public class Test_6 {
             session.beginTransaction();
             session.save(section_1);
 
+            //так как нет каскадного сохранения, надо добавить детей в новую секцию вручную это минус,
+            //плюс в том, что при удалении секции, данные по детям остаются
             section_1.addChildToSection(session.get(Child.class, 1));
             section_1.addChildToSection(session.get(Child.class, 2));
             section_1.addChildToSection(session.get(Child.class, 3));
