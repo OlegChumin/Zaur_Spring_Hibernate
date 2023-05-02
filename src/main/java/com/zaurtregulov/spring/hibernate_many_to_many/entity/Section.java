@@ -26,7 +26,7 @@ public class Section {
      * связанных с ним объектов Child будет выброшено исключение org.hibernate.TransientPropertyValueException.
      *
      * */
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "child_section",
             joinColumns = @JoinColumn(name = "section_id"),
             // указываем, с помощью какого столбца child_section связывается с section
