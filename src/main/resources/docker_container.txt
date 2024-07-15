@@ -1,0 +1,32 @@
+MYSQL
+
+docker stop mysql-container
+docker rm mysql-container
+
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root_pass -e MYSQL_DATABASE=employee_db -e MYSQL_USER=user -e MYSQL_PASSWORD=user_pass -p 3306:3306 -p 33060:33060 -v /path/to/your/mysql/data:/var/lib/mysql -d mysql:latest
+
+--name mysql-container — задает имя контейнера
+
+-e MYSQL_ROOT_PASSWORD - пароль для пользователя root.
+-e MYSQL_DATABASE - имя базы данных, которая будет создана.
+-e MYSQL_USER - имя пользователя, который будет создан.
+-e MYSQL_PASSWORD - пароль для создаваемого пользователя.
+-v C:\Users\tschu\Documents\SQL\data:/var/lib/mysql — монтирует локальную директорию в контейнер для сохранения данных
+-d mysql:latest — указывает использовать последнюю версию образа MySQL и запускает контейнер в фоновом режиме.
+
+docker exec -it mysql-container bash
+# Внутри контейнера:
+mysql -u root -p
+# Введите пароль root
+
+# Внутри MySQL выполните:
+SHOW GRANTS FOR 'user'@'localhost';
+GRANT ALL PRIVILEGES ON employee_db.* TO 'user'@'localhost';
+FLUSH PRIVILEGES;
+
+
+POSTGRES
+docker run --name my-postgres-container -p 5432:5432 -v C:/Users/tschu/Documents/SQL/postgres_data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=pass -d postgres:latest
+
+
+
