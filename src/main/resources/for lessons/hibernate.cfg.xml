@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- MySQL Configuration -->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/my_db?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.username">bestuser</property>
+        <property name="hibernate.connection.password">bestuser</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- PostgreSQL Configuration -->
+        <property name="hibernate.connection.url_pg">jdbc:postgresql://localhost:5432/my_pg_db</property>
+        <property name="hibernate.connection.driver_class_pg">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username_pg">pguser</property>
+        <property name="hibernate.connection.password_pg">pgpassword</property>
+        <property name="hibernate.dialect_pg">org.hibernate.dialect.PostgreSQLDialect</property>
+    </session-factory>
+</hibernate-configuration>
+
