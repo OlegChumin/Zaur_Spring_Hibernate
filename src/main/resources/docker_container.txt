@@ -1,9 +1,12 @@
 MYSQL
+в терминале
+%SystemRoot%\system32\cmd.exe /K color A
+color 07
 
 docker stop mysql-container
 docker rm mysql-container
 
-docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root_pass -e MYSQL_DATABASE=employee_db -e MYSQL_USER=user -e MYSQL_PASSWORD=user_pass -p 3306:3306 -p 33060:33060 -v /path/to/your/mysql/data:/var/lib/mysql -d mysql:latest
+docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root_pass -e MYSQL_DATABASE=employee_db -e MYSQL_USER=user -e MYSQL_PASSWORD=user_pass -p 3306:3306 -p 33060:33060 -v C:/Users/tschu/Documents/SQL/mysql_data:/var/lib/mysql -d mysql:latest
 
 --name mysql-container — задает имя контейнера
 
@@ -16,13 +19,14 @@ docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=root_pass -e MYSQL_DATA
 
 docker exec -it mysql-container bash
 # Внутри контейнера:
-mysql -u root -p
+docker exec -it mysql-container mysql -u root -p
 # Введите пароль root
 
 # Внутри MySQL выполните:
 SHOW GRANTS FOR 'user'@'localhost';
 GRANT ALL PRIVILEGES ON employee_db.* TO 'user'@'localhost';
 FLUSH PRIVILEGES;
+QUIT
 
 
 POSTGRES
